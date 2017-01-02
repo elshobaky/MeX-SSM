@@ -1,0 +1,18 @@
+{% extends '/base/base.html' %}
+{% block title %}{% trans %}login{% endtrans %}{% endblock title %}
+
+{% block content %}
+<form method="POST" action="/user/login" id="login_form" role="form">
+  <h2>{% trans %}login{% endtrans %}</h2>
+    <label for="email">{% trans %}e-mail{% endtrans %}</label>
+    <input type="email" name="email" value="{{email}}" placeholder="{% trans %}e-mail{% endtrans %}" required>
+
+    <label for="password">{% trans %}password{% endtrans %}</label>
+    <input type="password" name="password" value="" placeholder="{% trans %}password{% endtrans %}" required>
+
+    <input type="submit" value="{% trans %}log in{% endtrans %}"/>
+
+    <h2>{% trans %}Other Options{% endtrans %}</h2>
+      <a href="{{login_url}}">{% trans %}Log in with Google{% endtrans %}</a>
+</form>
+{% endblock content %}

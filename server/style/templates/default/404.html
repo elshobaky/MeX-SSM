@@ -1,0 +1,17 @@
+{% extends "/base/base.html" %}
+{% block title %}
+    {% trans %}Page Not Found{% endtrans %}
+{% endblock %}
+
+{% block content %}
+
+	{% if user %}
+	    	{% trans %}Opps! seems like this page dosn't exist or you don't have the right to view it .{% endtrans %}
+	{% else %}
+	    	{% trans %}Opps! seems like this page dosn't exist or you don't have the right to view it . please,{% endtrans %}
+	    	<a href="/user/login">{% trans %}sign in{% endtrans %}</a> {% trans %}or{% endtrans %}
+	    	<a href="/user/signup">{% trans %}register{% endtrans %}</a>
+	    	{% trans %}if you don't have an account{% endtrans %}
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+# extract translatable text from project files
+pybabel extract -F ./babel.cfg -o ./locale/messages.pot ./
+
+# init new language (ex. en_US)
+pybabel init -l en_US -d ./locale -i ./locale/messages.pot
+
+# update existing language file after new text extraction
+pybabel update -l en_US -d ./locale -i ./locale/messages.pot
+
+# compile text
+pybabel compile -f -d ./locale

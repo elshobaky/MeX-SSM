@@ -1,0 +1,11 @@
+{% extends '/base/base.html' %}
+{% block title %} {{user.nickname}} {% endblock title %}
+
+{% block content %}
+<h2>{% trans %}Your Info{% endtrans %}</h2>
+<p>{{user.make_dict()}}</p>
+
+<h2>{% trans %}Edit Your Info{% endtrans %}</h2>
+  {% include '/user/profile/edit-profile.html' %}
+
+{% endblock content %}

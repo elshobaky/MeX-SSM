@@ -1,0 +1,29 @@
+{% extends '/base/base.html' %}
+{% block title %}{% trans %}Signup{% endtrans %}{% endblock title %}
+
+{% block content %}
+  <form method="POST" action="/user/signup" id="signup_form">
+    <h2>{% trans %}register new account{% endtrans %}</h2>
+      <label for="firstname">{% trans %}first name{% endtrans %}</label>
+      <input type="text" name="firstname" value="{{firstname}}" placeholder="{% trans %}first name{% endtrans %}" required>
+
+      <label for="lastname">{% trans %}last name{% endtrans %}</label>
+      <input type="text" name="lastname" value="{{lastname}}" placeholder="{% trans %}last name{% endtrans %}" required>
+
+
+      <label for="email">{% trans %}e-mail{% endtrans %}</label>
+      <input type="email" name="email" value="{{email}}" placeholder="{% trans %}e-mail{% endtrans %}" required>
+
+      <label for="password">{% trans %}password{% endtrans %}</label>
+      <input type="password" name="password" value="" placeholder="{% trans %}password{% endtrans %}" required>
+
+
+      <label for="verify">{% trans %}confirm password{% endtrans %}</label>
+      <input type="password" name="verify" value="" placeholder="{% trans %}confirm password{% endtrans %}" required>
+
+      <input type="submit" value="{% trans %}ٍsignup{% endtrans %}"/>
+    <h2>{% trans %}Other Options{% endtrans %}</h2>
+      <a href="{{login_url}}">{% trans %}Sign up with Google{% endtrans %}</a>
+
+  </form>
+{% endblock content %}

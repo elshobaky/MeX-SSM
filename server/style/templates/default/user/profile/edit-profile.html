@@ -1,0 +1,124 @@
+<div id="edit-profile" class="tab-pane">
+<section class="panel">                                         
+    <div class="panel-body bio-graph-info">
+        <h1> معلومات الحساب</h1>
+        <form class="form-horizontal" id="edit_profile" role="form" action="/user/profile" method="POST">                                                  
+            <div class="form-group">
+                <label class="col-lg-2 control-label" for="firstname">الاسم الأول</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="{{user.firstname or user.name}}">
+                </div>
+            
+                <label class="col-lg-2 control-label" for="lastname">الاسم الأخير</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="{{user.lastname or user.name}}">
+                </div>
+            </div>
+            <div class="alert alert-danger edit_error" id="error_name" role="alert" style="display:none"></div>
+            {% if error_name %}
+            <div class="alert alert-danger" role="alert">{{error_name}}</div>
+            {% endif %}
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label" for="about">نبذة عنك</label>
+                <div class="col-lg-10">
+                    <textarea name="about" id="about" class="form-control" cols="30" rows="5">{{user.about or about or ''}}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label" for="email">البريد الإلكتروني</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="email" name="email" value="{{user.email}}">
+                </div>
+                <label class="col-lg-2 control-label" for="country">الدولة</label>
+                <div class="col-lg-4">
+                    <div data-name="country" class="bfh-selectbox bfh-countries" data-country="{{user.country or country or 'Eg'}}" data-flags="true">
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-danger edit_error" id="error_email" role="alert" style="display:none"></div>
+            {% if error_email %}
+            <div class="alert alert-danger" role="alert">{{error_email}}</div>
+            {% endif %}
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label" for="password">كلمة المرور</label>
+                <div class="col-lg-4">
+                    <input type="password" class="form-control" id="password" name="password" value="">
+                </div>
+                
+            </div>
+            <div class="alert alert-danger edit_error" id="error_password" role="alert" style="display:none"></div>
+            {% if error_password %}
+            <div class="alert alert-danger" role="alert">{{error_password}}</div>
+            {% endif %}
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" id="edit_profile_end">
+                    <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                </div>
+            </div>
+        </form>
+        <hr></hr>
+        
+        <form class="form-horizontal" id="edit_contact" role="form" action="/user/profile/changecontact" method="POST">
+            <div class="form-group">
+                <label class="col-lg-2 control-label" for="f">فيسبوك</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="f" name="f" value="{{user.contact.f or ''}}">
+                    <div class="alert alert-danger contact_error" role="alert" style="display:none;" id="error_f"></div>
+                    {% if error_f %}
+                        <div class="alert alert-danger" role="alert">{{error_f}}</div>
+                    {% endif %}
+                </div>
+                <label class="col-lg-2 control-label" for="t">تويتر</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="t" name="t" value="{{user.contact.t or ''}}">
+                    <div class="alert alert-danger contact_error" role="alert" style="display:none;" id="error_t"></div>
+                    {% if error_t %}
+                        <div class="alert alert-danger" role="alert">{{error_t}}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label" for="g">جوجل بلس</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="g" name="g" value="{{user.contact.g or ''}}">
+                    <div class="alert alert-danger contact_error" role="alert" style="display:none;" id="error_g"></div>
+                    {% if error_g %}
+                        <div class="alert alert-danger" role="alert">{{error_g}}</div>
+                    {% endif %}
+                </div>
+                <label class="col-lg-2 control-label" for="i">انستاجرام</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" id="i" name="i" value="{{user.contact.i or ''}}">
+                    <div class="alert alert-danger contact_error" role="alert" style="display:none;" id="error_i"></div>
+                    {% if error_i %}
+                        <div class="alert alert-danger" role="alert">{{error_i}}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10" id="edit_contact_end">
+                    <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                </div>
+            </div>
+        </form>
+        <hr></hr>
+        <form class="form-horizontal" id="edit_avatar" role="form" action="{{upload_url}}" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+                <label class="col-lg-2 control-label" for="avatar">الصورة الشخصية</label>
+                <div class="col-lg-6">
+                    <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
+                </div>
+                <input type="hidden" name="action" value="change avatar">
+                <div class="col-lg-3">
+                  <button type="submit" class="btn btn-primary">تغيير الصورة الشخصية</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </section>
+</div>

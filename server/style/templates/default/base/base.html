@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock title %}</title>
+  <!-- CSS files -->
+  {% block css %}{% endblock css %}
+</head>
+<body>
+  <header></header>
+
+  <section id=main-content>
+    {% block content %}{% endblock content %}
+  </section>
+  
+  <footer></footer>
+
+  <!-- JS files -->
+  {% block js %}{% endblock js %}
+
+</body>
+</html>

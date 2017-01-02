@@ -1,0 +1,13 @@
+{% extends "/base/base.html" %}
+{% block title %}
+    {% trans %}Home{% endtrans %}
+{% endblock title %}
+
+{% block content %}
+  {% if user %}
+    {% trans %}Welcome!{% endtrans %} {{user.nickname}}
+  {% else %}
+    {% trans %}Welcome!{% endtrans %}
+  {% endif %}
+
+{% endblock content %}
